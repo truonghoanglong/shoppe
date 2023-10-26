@@ -11,28 +11,33 @@ export default function Register() {
     const onSubmit = handleSubmit((data) => {
         console.log(data)
     })
+
+    console.log('error', errors)
+
     return (
         <div className='bg-orange'>
             <div className='max-w-7xl mx-auto px-4'>
                 <div className='grid grid-cols-1 py-12 lg:grid-cols-5 lg:py-32 lg:pr-10'>
                     <div className='lg:col-span-2 lg:col-start-4'>
-                        <form className='p-10 rounded bg-white shadow-sm' onSubmit={onSubmit}>
+                        <form className='p-10 rounded bg-white shadow-sm' onSubmit={onSubmit} noValidate>
                             <div className='text-2xl'>Đăng Ký</div>
                             <div className='mt-8'>
                                 <input
                                     type='email'
-                                    name='email'
                                     className='p-3 w-full outline-none border border-gray-300 focus:border-gray-500 rounded-sm focus:shadow-sm'
                                     placeholder='Email'
+                                    {...register('email', {
+                                        required: true
+                                    })}
                                 />
                                 <div className='mt-1 text-red-600 min-h-[1rem] text-sm'></div>
                             </div>
                             <div className='mt-5'>
                                 <input
                                     type='password'
-                                    name='password'
                                     className='p-3 w-full outline-none border border-gray-300 focus:border-gray-500 rounded-sm focus:shadow-sm'
                                     placeholder='Password'
+                                    {...register('password')}
                                 />
                                 <div className='mt-1 text-red-600 min-h-[1rem] text-sm'></div>
                             </div>
@@ -40,9 +45,9 @@ export default function Register() {
                             <div className='mt-5'>
                                 <input
                                     type='password'
-                                    name='Confilm_password'
                                     className='p-3 w-full outline-none border border-gray-300 focus:border-gray-500 rounded-sm focus:shadow-sm'
-                                    placeholder='Confilm Password'
+                                    placeholder='Confirm Password'
+                                    {...register('confirm_password')}
                                 />
                                 <div className='mt-1 text-red-600 min-h-[1rem] text-sm'></div>
                             </div>
