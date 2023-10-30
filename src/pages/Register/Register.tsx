@@ -1,13 +1,10 @@
 import { useForm } from 'react-hook-form'
 import { Link } from 'react-router-dom'
 import Input from '~/components/Input'
-import { getRules } from '~/utils/rules'
+import { schema, Schema } from '~/utils/rules'
+import { yupResolver } from '@hookform/resolvers/yup'
 
-interface FormData {
-    email: string
-    password: string
-    confirm_password: string
-}
+type FormData = Schema
 
 export default function Register() {
     const {
@@ -15,7 +12,9 @@ export default function Register() {
         handleSubmit,
         getValues,
         formState: { errors }
-    } = useForm<FormData>()
+    } = useForm<Schema>({
+        resolver: yupResolver(schema)
+    })
 
     const onSubmit = handleSubmit(
         (data) => {
@@ -26,10 +25,6 @@ export default function Register() {
             console.log(password)
         }
     )
-
-    // console.log('error', errors)
-
-    const rules = getRules(getValues)
 
     return (
         <div className='bg-orange'>
@@ -46,7 +41,6 @@ export default function Register() {
                                 className='mt-8'
                                 name='email'
                                 placeholder='Email'
-                                rules={rules.email}
                             />
 
                             <Input
@@ -56,7 +50,6 @@ export default function Register() {
                                 className='mt-5'
                                 name='password'
                                 placeholder='Password'
-                                rules={rules.password}
                                 autoComplete='on'
                             />
 
@@ -67,24 +60,8 @@ export default function Register() {
                                 className='mt-5'
                                 name='confirm_password'
                                 placeholder='Confirm Password'
-                                rules={rules.confirm_password}
                                 autoComplete='on'
                             />
-
-                            {/* <div className='mt-5'>
-                                <input
-                                    type='password'
-                                    className='p-3 w-full outline-none border border-gray-300 focus:border-gray-500 rounded-sm focus:shadow-sm'
-                                    placeholder='Confirm Password'
-                                    autoComplete='on'
-                                    {...register('confirm_password', {
-                                        ...rules.confirm_password
-                                    })}
-                                />
-                                <div className='mt-1 text-red-600 min-h-[1.25rem] text-sm'>
-                                    {errors.confirm_password?.message}
-                                </div>
-                            </div> */}
 
                             <div className='mt-7'>
                                 <button
