@@ -28,6 +28,9 @@ export default function Register() {
         registerAccountMutation.mutate(body, {
             onSuccess: (data) => {
                 console.log(data)
+            },
+            onError: (error) => {
+                console.log(error)
             }
         })
     })
