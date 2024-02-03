@@ -21,19 +21,19 @@ export default function Login() {
                             <div className='mt-8'>
                                 <input
                                     type='email'
-                                    name='email'
                                     className='p-3 w-full outline-none border border-gray-300 focus:border-gray-500 rounded-sm focus:shadow-sm'
                                     placeholder='Email'
+                                    {...register('email')}
                                 />
                                 <div className='mt-1 text-red-600 min-h-[1rem] text-sm'></div>
                             </div>
                             <div className='mt-5'>
                                 <input
                                     type='password'
-                                    name='password'
                                     autoComplete='on'
                                     className='p-3 w-full outline-none border border-gray-300 focus:border-gray-500 rounded-sm focus:shadow-sm'
                                     placeholder='Password'
+                                    {...register('password')}
                                 />
                                 <div className='mt-1 text-red-600 min-h-[1rem] text-sm'></div>
                             </div>
