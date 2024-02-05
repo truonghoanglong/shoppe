@@ -5,9 +5,8 @@ export interface User {
     email: string
     name: string
     date_of_birth: null
-    address: string
+    addres: string
     phone: string
     createdAt: string
     updatedAt: string
-    __v: number
 }

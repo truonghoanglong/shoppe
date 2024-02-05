@@ -1,4 +1,4 @@
 export interface ResponseApi<Data> {
-    message: Data
+    message: string
     data?: Data
 }
