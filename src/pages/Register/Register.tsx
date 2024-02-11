@@ -13,6 +13,8 @@ import { toast } from 'react-toastify'
 type FormData = Schema
 
 export default function Register() {
+    console.log('Năm mới thật thành công')
+
     const {
         register,
         handleSubmit,
